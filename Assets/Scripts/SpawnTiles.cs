@@ -9,6 +9,7 @@ public class SpawnTiles : MonoBehaviour
     public GameObject EmptyTileToSpawn;
     public GameObject Block;
     public GameObject Coin;
+    public GameObject Chaser;
     private bool empty, changeDirection;
     private int distanceBetweenTiles = 8;
     public float randomDirectionValue = 0.8f;
@@ -40,6 +41,7 @@ public class SpawnTiles : MonoBehaviour
     void Update()
     {
         if (Time.time - startTime >= timeOffset) {
+            Chaser.transform.position = previousTile.transform.position;
             Destroy(previousTile);
             previousTile = tilesQueue.Peek();
             tilesQueue.Dequeue();
